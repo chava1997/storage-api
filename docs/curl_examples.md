@@ -52,3 +52,26 @@ curl -vq http://localhost:8080/storage/json \
     -H 'Content-Type: application/json' \
     --data @./foo.json
 ```
+
+## Performing Authentication
+
+This project includes basic `jwt` authentication, first you need a registered user,
+the registration endpoint is `/auth/signup`, and it receives a `json` with keys
+`username`, `email`, `password`, `password_confirmation`, and `phone`.
+
+> Currently there is no actual validation for `phone` or `email`.
+
+One can create a user with a `POST /auth/signup`, such as 
+
+
+```
+
+curl -qv http://localhost:8080/auth/signup \
+    -H 'Content-Type: application/json' \
+    -d '{"username": "baz", "email": "baz@baz.com", "password": "baz", "password_confirmation": "baz", "phone":"0911"}'
+
+curl -qv http://localhost:8080/auth/login\
+    -H 'Content-Type: application/json' \
+    -d '{"username": "baz", "email": "baz@baz.com", "password": "baz"}'
+
+```

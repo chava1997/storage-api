@@ -6,9 +6,11 @@ service.
 
 """
 
+import sys
 import bottle
 import routes.auth
 import routes.storage
+import models.base
 
 app = bottle.Bottle()
 
@@ -22,4 +24,17 @@ def root_index(*args, **kwargs):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    error = False
+    if (argv_len := len(sys.argv)) > 1:
+        if sys.argv[1] == 'routes':
+            for route in app.routes:
+                print(route.rule, route.method, route, sep="\t")
+        if sys.argv[1] == 'db' and 'migrate' in sys.argv:
+            print("Database Migration:")
+            models.base.migrate_database("-".join(sys.argv[3:]))
+        else:
+            error = True
+    elif error:
+        print("Bad use")
+    else:
+        app.run(host="0.0.0.0", port=8080)

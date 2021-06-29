@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5f52632e02cc12eba6c0459b78b83206747de089c22dbaecfdbd345633f3ba06"
+            "sha256": "dd0fb1065ed2faaced80fd49b06eaa5b81b5dd2ddcb81edaf148bbf62ef38778"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -101,14 +101,22 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
             "version": "==4.0.0"
         },
+        "click": {
+            "hashes": [
+                "sha256:8c04c11192119b1ef78ea049e0a6f0463e4c48ef00a30160c704337586f3ad7a",
+                "sha256:fba402a4a47334742d782209a7c79bc448911afe1149d07bdabdf480b3e2f4b6"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==8.0.1"
+        },
         "dropbox": {
             "hashes": [
-                "sha256:02d74325334ff029ccb0015da4d5f5bc2fa4900d35e6ee0fc0d975b51d4def87",
-                "sha256:14dd51e0e3981cb81384a8e13a308de0df13c7c4b6ba7f080177ede947761cbb",
-                "sha256:673872a67cd5fdb40a9875ba3b5a99d0058fe829715e5fae36b469571f59eda8"
+                "sha256:27e70bae5082ca96938ea02ac03b9e1d4accf794a5d1632d8168b6835eff70c1",
+                "sha256:526b66385f6ade173eda37c1f23d64b6f2f39dda00287d8287dd2bf04a8de02f",
+                "sha256:bd024f9f4d90d2c9e1f62f09f3cda46ca3799d33258cfcb8ec02cf112db1f217"
             ],
             "index": "pypi",
-            "version": "==11.11.0"
+            "version": "==11.12.0"
         },
         "google-api-core": {
             "hashes": [
@@ -128,11 +136,11 @@
         },
         "google-cloud-core": {
             "hashes": [
-                "sha256:2ab0cf260c11d0cc334573301970419abb6a1f3909c6cd136e4be996616372fe",
-                "sha256:9bd528810423aeaa428a9a178e7320883bbb690a8b0bb38297b794dc319c415a"
+                "sha256:31e8c8596d3fbe2ecbe8708572b48741f8b247a78740aebfaf4da445487a1af5",
+                "sha256:3bd1e679a3d38b9da93c5919ae56239dda91fb32a2d954b2cd830392337c1cc9"
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
-            "version": "==1.7.0"
+            "version": "==1.7.1"
         },
         "google-cloud-storage": {
             "hashes": [
@@ -215,6 +223,14 @@
             ],
             "index": "pypi",
             "version": "==3.14.4"
+        },
+        "peewee-migrate": {
+            "hashes": [
+                "sha256:3620c3ae0e09de07e2124756d2f36846dfe71c26e73e0cd70788bd154a9fa24f",
+                "sha256:d2416c388eb8b7c91d2233289ed359bd7b6868c8e5f065743ac0c92866691a06"
+            ],
+            "index": "pypi",
+            "version": "==1.4.3"
         },
         "ply": {
             "hashes": [
@@ -308,7 +324,7 @@
                 "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1",
                 "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
             ],
-            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "markers": "python_version >= '2.6' and python_version not in '3.0, 3.1, 3.2'",
             "version": "==2.4.7"
         },
         "pytz": {
@@ -339,7 +355,7 @@
                 "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926",
                 "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2'",
             "version": "==1.16.0"
         },
         "stone": {
@@ -352,11 +368,11 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:753a0374df26658f99d826cfe40394a686d05985786d946fbe4165b5148f5a7c",
-                "sha256:a7acd0977125325f516bda9735fa7142b909a8d01e8b2e4c8108d0984e6e0098"
+                "sha256:39fb8672126159acb139a7718dd10806104dec1e2f0f6c88aab05d17df10c8d4",
+                "sha256:f57b4c16c62fa2760b7e3d97c35b255512fb6b59a259730f36ba32ce9f8e342f"
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4' and python_version < '4'",
-            "version": "==1.26.5"
+            "version": "==1.26.6"
         }
     },
     "develop": {}

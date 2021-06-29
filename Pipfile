@@ -9,6 +9,7 @@ google-cloud-storage = "*"
 pyjwt = "*"
 peewee = "*"
 dropbox = "*"
+peewee-migrate = "*"
 
 [dev-packages]
 
