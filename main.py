@@ -10,17 +10,24 @@ import sys
 import bottle
 import routes.auth
 import routes.storage
+import routes.calificaciones
 import models.base
 
 app = bottle.Bottle()
 
 app.mount("/auth", routes.auth.app)
+app.mount("/school", routes.calificaciones.app)
 app.mount("/storage", routes.storage.app)
 
 
 @app.get("/")
 def root_index(*args, **kwargs):
     return dict(code=200)
+
+
+@app.post("/test")
+def test_post(*args, **kwargs):
+    return dict(code=200, body=bottle.request.json)
 
 
 if __name__ == '__main__':
