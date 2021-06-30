@@ -1,6 +1,6 @@
 # School API
 
-> Autor: Fulanito
+> Autor: Alejandro Salgado
 
 Deseamos construir un sistema de control de calificaciones de alumnos donde se puedan registar alumnos, materias y docentes, y
 se puedan realizar consultas generales a los datos, asi como registrar calificaciones para alumnos en cada curso.
