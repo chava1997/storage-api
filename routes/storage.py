@@ -28,6 +28,14 @@ def route_file(*args, **kwargs):
     `file`.
     """
     file = bottle.request.files.get("file")
+    # bottle.request.files.keys()
+    #
+    # file = bottle.request.file.get(nombre_de_input)
+    # file.filename
+    # file.file, aplicar la funcion file.file.read()
+    # raise HTTPError(406, "Tipo de archivo invalido")
+    # filename = get_license_name()
+    # store_bytes("files", "certificado.xyz", file.file.read())
     store_bytes("files", file.filename, file.file.read())
     bottle.response.status = 201
     bottle.response.content_type = "application/json"

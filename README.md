@@ -57,6 +57,12 @@ Once configure you should execute `pipenv install`, and if this was successful y
 go ahead an run `pipenv run start` which should run a `http` server powered by
 `bottle.py` at `http://0.0.0.0:8080`.
 
+#### Note for windows users
+
+If you run `pipenv` directly on a `git-bash` terminal, you will find that the `print` function, won't output directly while _bottle_ is running. To overcome this issue one can run
+`winpty pipenv` instead of just `pipenv`, show the actual
+print statements as they happen.
+
 
 # Contribute to the project
 

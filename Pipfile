@@ -10,6 +10,7 @@ google-cloud-storage = "*"
 peewee = "*"
 peewee-migrate = "*"
 pyjwt = "*"
+requests = "*"
 
 [dev-packages]
 webtest = "*"

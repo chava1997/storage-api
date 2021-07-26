@@ -10,8 +10,21 @@ app = BottleJson()
 
 
 @app.get("/")
-def index():
-    return dict(code=200, message="OK")
+@app.get("/<name>")
+@app.get("/<name>/<age:int>")
+def index(name="mariano", age=10):
+    payload = bottle.request.query
+    print(name)
+    print(bottle.request.query_string)
+    print(payload.dict)
+    print(name, age)
+    raise bottle.HTTPError(501, 'Error')
+
+@app.post("/")
+def index_post():
+    payload = bottle.request.json
+    print(payload)
+    raise bottle.HTTPError(501, 'Error')
 
 
 @app.get("/auth/simple")
