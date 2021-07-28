@@ -9,21 +9,21 @@ except KeyError:
     storage_dir = None
 
 
-def get_file_to_store(collection, filename):
+def get_file_to_store(collection, filename, update=False):
     target = (storage_dir / collection / filename)
-    if target.exists():
+    if target.exists() and not update:
         raise Exception("File already exists")
     target.parent.mkdir(exist_ok=True, parents=True)
     return target
 
 
-def store_bytes(collection, filename, blob):
-    target = get_file_to_store(collection, filename)
+def store_bytes(collection, filename, blob, update=False):
+    target = get_file_to_store(collection, filename, update=update)
     target.write_bytes(blob)
 
 
-def store_string(collection, filename, text):
-    target = get_file_to_store(collection, filename)
+def store_string(collection, filename, text, update=False):
+    target = get_file_to_store(collection, filename, update=update)
     target.write_text(text)
 
 
