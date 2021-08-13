@@ -11,6 +11,7 @@ import datetime
 import bottle
 import routes.auth
 import routes.storage
+import routes.storage_admin
 import routes.example
 import models.base
 
@@ -19,6 +20,7 @@ app = bottle.Bottle()
 app.mount("/auth", routes.auth.app)
 app.mount("/example", routes.example.app)
 app.mount("/storage", routes.storage.app)
+app.mount("/storage_admin", routes.storage_admin.app)
 
 
 @app.get("/")
