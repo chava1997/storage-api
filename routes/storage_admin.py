@@ -57,7 +57,7 @@ def get_mercancias(*args, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 
-# curl http://localhost:8080/storage_admin/mercancia/query/ejemplos11-2010-12-12 -X GET
+# curl http://localhost:8080/storage_admin/mercancia/query/ejem1 -X GET
 @app.get("/mercancia/query/<clave>")
 def query_m_cla(*args, clave=None, **kwargs):
     try:
@@ -67,6 +67,7 @@ def query_m_cla(*args, clave=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 
+# curl http://localhost:8080/storage_admin/mercancia/query/ejemplo -X GET
 @app.get("/mercancia/query/<descripcion>")
 def query_m_des(*args, descripcion=None, **kwargs):
     try:
@@ -100,7 +101,7 @@ def create_category(*args, **kwargs):
 
 
 
-# curl http://localhost:8080/storage_admin//entradas/query
+# curl http://localhost:8080/storage_admin/entradas/query
 @app.get("/entradas/query")
 def get_entradas(*args, **kwargs):
     try:
@@ -120,6 +121,7 @@ def query_e_id(*args, id_e=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 
+# curl http://localhost:8080/storage_admin/entradas/query/2021-12-12 -X GET
 @app.get("/entradas/query/<fecha_e>")
 def query_e_fec(*args, fecha_e=None, **kwargs):
     try:
@@ -129,7 +131,7 @@ def query_e_fec(*args, fecha_e=None, **kwargs):
     raise bottle.HTTPError(200, respuesta)
 
 
-
+# curl http://localhost:8080/storage_admin/entradas/query/10 -X GET
 @app.get("/entradas/query/<cantidad_e>")
 def query_e_can(*args, cantidad_e=None, **kwargs):
     try:

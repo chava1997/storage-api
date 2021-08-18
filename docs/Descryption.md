@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ### Store_Admin
 
 # Estructura General del proyecto
@@ -566,4 +566,117 @@ DATA='{"descripcion":"esta es la mercancia", "presentacion":"paquete con 4 unida
 
 Todas los registros seran en formato JSON y se almacenaran o en la nube.
 >Los datos se almacenan en la nube para poder consultar la informacion desde cualquier lugar
->>>>>>> 60315f50ece3d9f9bc0f8ca547436e11cf3408a4
+
+
+## Casos de uso
+
+### Registrar una mercancia
+- Metodo `Post`
+- Objetivo: registrar una nueva mercancia
+- Se requiere ingresar los siguientes valores:
+  - `descripcion`
+  - `presentacion`
+  - `clave`
+- Si no se ingresa una descripcion la mercancia no se podra registrar
+
+`curl localhost:8080/storage_admin/mercancia/register -X POST -H "Content-Type: application/json" -d '{"descripcion": "ejemplo","presentacion":"ejemplo","clave": "ejem1"}'`
+
+### Consultar las mercancias
+- Metodo `GET`
+- Objetivo: Consultar todas las mercacias
+- Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
+
+En esta funcion se regresa una lista con los json que conforman todas las mercancias disponibles.
+
+`curl http://localhost:8080/storage_admin/mercancia/query -X GET`
+
+### Consultar una mercancia por clave
+- Metodo `GET`
+- Objetivo: consultar una emrcancia espesifica por su clave
+- Se requiere la clave de la mercancia, este dato debe de ser exacto, en caso de ingresar una clave no valida, regresara un error
+
+Esta funcion regresa una mercancia espesifica en funcion de la clave
+
+`curl http://localhost:8080/storage_admin/mercancia/query/ejem1 -X GET`
+
+### Consultar una mercancia por descripcion
+- Metodo `GET`
+- Objetivo: consultar una emrcancia espesifica por su descripcion
+- Se requiere la descripcion de la mercancia, este dato debe de ser exacto, en caso de ingresar una descripcion no valida, regresara un error
+
+Esta funcion regresa una mercancia espesifica en funcion de la descripcion
+
+`curl http://localhost:8080/storage_admin/mercancia/query/ejemplo -X GET`
+
+### Registrar una entrada
+- Metodo `Post`
+- Objetivo: registrar una nueva entrada
+- Se requiere ingresar los siguientes valores:
+  - `id_e`
+  - `fecha_e`
+  - `cantidad_e`
+
+`curl localhost:8080/storage_admin/entradas/register -X POST -H "Content-Type: application/json" -d '{"id_e": "001","fecha_e": "2021-12-12", "cantidad_e": "10"}'`
+
+### Consultar entradas
+- Metodo `GET`
+- Objetivo: Consultar todas las entradas
+- Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
+
+En esta funcion se regresa una lista con los json que conforman todas las entradas disponibles.
+
+`curl http://localhost:8080/storage_admin/entradas/query -X GET`
+
+### Consultar una entrada por ID
+- Metodo `GET`
+- Objetivo: consultar una entrada espesifica por su ID
+- Se requiere el ID de la entrada, este dato debe de ser exacto, en caso de ingresar un ID no valida, regresara un error
+
+Esta funcion regresa una entrada espesifica en funcion del ID.
+
+`curl http://localhost:8080/storage_admin/entradas/query/001 -X GET`
+
+### Consultar entradas por fecha
+- Metodo `GET`
+- Objetivo: consultar todas las entradas con una fecha espesifica
+- Se requiere la fecha de las entradas
+
+Esta funcion regresa todas las entradas que se hayan registrado en una fecha espesifica.
+
+`curl http://localhost:8080/storage_admin/entradas/query/2021-12-12 -X GET`
+
+#### Consultar entradas por cantidad
+- Metodo `GET`
+- Objetivo: consultar todas las entradas con una cantidad espesifica
+- Se requiere la cantidad de las entradas
+
+Esta funcion regresa todas las entradas que se hayan registrado con una cantidad espesifica.
+
+`curl http://localhost:8080/storage_admin/entradas/query/10 -X GET`
+
+### Registrar una salida
+- Metodo `Post`
+- Objetivo: registrar una nueva salida
+- Se requiere ingresar los siguientes valores:
+  - `id_s`
+  - `fecha_s`
+  - `cantidad_s`
+
+`curl localhost:8080/storage_admin/salidas/register -X POST -H "Content-Type: application/json" -d '{"id_s": "001","fecha_s": "2021-12-12", "cantidad_s": "10"}'`
+
+### Consultar entradas
+`curl http://localhost:8080/storage_admin/salidas/query -X GET`
+
+### Consultar una salida por ID
+`curl http://localhost:8080/storage_admin/salidas/query/001 -X GET`
+
+### Consultar salidas por fecha
+`curl http://localhost:8080/storage_admin/salidas/query/2021-12-12 -X GET`
+
+#### Consultar salidas por cantidad
+`curl http://localhost:8080/storage_admin/salidas/query/10 -X GET`
+
+
+
+
+## Futuros cambios al backend
