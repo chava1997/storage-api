@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ### Store_Admin
 
 # Estructura General del proyecto
@@ -566,4 +566,48 @@ DATA='{"descripcion":"esta es la mercancia", "presentacion":"paquete con 4 unida
 
 Todas los registros seran en formato JSON y se almacenaran o en la nube.
 >Los datos se almacenan en la nube para poder consultar la informacion desde cualquier lugar
->>>>>>> 60315f50ece3d9f9bc0f8ca547436e11cf3408a4
+
+
+## Casos de uso
+
+### Registrar una mercancia
+`curl localhost:8080/storage_admin/mercancia/register -X POST -H "Content-Type: application/json" -d '{"descripcion": "ejemplo","presentacion":"ejemplo","clave": "ejem1"}'`
+
+### Consultar las mercancias
+`curl http://localhost:8080/storage_admin/mercancia/query -X GET`
+
+### Consultar una mercancia por clave
+`curl http://localhost:8080/storage_admin/mercancia/query/ejem1 -X GET`
+
+### Consultar una mercancia por descripcion
+`curl http://localhost:8080/storage_admin/mercancia/query/ejemplo -X GET`
+
+### Registrar una entrada
+`curl localhost:8080/storage_admin/entradas/register -X POST -H "Content-Type: application/json" -d '{"id_e": "001","fecha_e": "2021-12-12", "cantidad_e": "10"}'`
+
+### Consultar entradas
+`curl http://localhost:8080/storage_admin/entradas/query -X GET`
+
+### Consultar una entrada por ID
+`curl http://localhost:8080/storage_admin/entradas/query/001 -X GET`
+
+### Consultar entradas por fecha
+`curl http://localhost:8080/storage_admin/entradas/query/2021-12-12 -X GET`
+
+#### Consultar entradas por cantidad
+`curl http://localhost:8080/storage_admin/entradas/query/10 -X GET`
+
+### Registrar una salida
+`curl localhost:8080/storage_admin/salidas/register -X POST -H "Content-Type: application/json" -d '{"id_s": "001","fecha_s": "2021-12-12", "cantidad_s": "10"}'`
+
+### Consultar entradas
+`curl http://localhost:8080/storage_admin/salidas/query -X GET`
+
+### Consultar una salida por ID
+`curl http://localhost:8080/storage_admin/salidas/query/001 -X GET`
+
+### Consultar salidas por fecha
+`curl http://localhost:8080/storage_admin/salidas/query/2021-12-12 -X GET`
+
+#### Consultar salidas por cantidad
+`curl http://localhost:8080/storage_admin/salidas/query/10 -X GET`
