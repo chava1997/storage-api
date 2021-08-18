@@ -571,18 +571,49 @@ Todas los registros seran en formato JSON y se almacenaran o en la nube.
 ## Casos de uso
 
 ### Registrar una mercancia
+- Metodo `Post`
+- Objetivo: registrar una nueva mercancia
+- Se requiere ingresar los siguientes valores:
+  - `descripcion`
+  - `presentacion`
+  - `clave`
+- Si no se ingresa una descripcion la mercancia no se podra registrar
 `curl localhost:8080/storage_admin/mercancia/register -X POST -H "Content-Type: application/json" -d '{"descripcion": "ejemplo","presentacion":"ejemplo","clave": "ejem1"}'`
 
 ### Consultar las mercancias
+- Metodo `GET`
+- Objetivo: Consultar todas las mercacias
+- Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
+
+En esta funcion se regresa una lista con los json que conforman todas las notas disponibles.
+
 `curl http://localhost:8080/storage_admin/mercancia/query -X GET`
 
 ### Consultar una mercancia por clave
+- Metodo `GET`
+- Objetivo: consultar una emrcancia espesifica por su clave
+- Se requiere la clave de la mercancia, este dato debe de ser exacto, en caso de ingresar una clave no valida, regresara un error
+
+Esta funcion regresa una mercancia espesifica en funcion de la clave
 `curl http://localhost:8080/storage_admin/mercancia/query/ejem1 -X GET`
 
 ### Consultar una mercancia por descripcion
+- Metodo `GET`
+- Objetivo: consultar una emrcancia espesifica por su descripcion
+- Se requiere la descripcion de la mercancia, este dato debe de ser exacto, en caso de ingresar una descripcion no valida, regresara un error
+
+Esta funcion regresa una mercancia espesifica en funcion de la descripcion
 `curl http://localhost:8080/storage_admin/mercancia/query/ejemplo -X GET`
 
 ### Registrar una entrada
+- Metodo `Post`
+- Objetivo: registrar una nueva entrada
+- Se requiere ingresar los siguientes valores:
+  - `id_e`
+  - `fecha_e`
+  - `cantidad_e`
+
+
 `curl localhost:8080/storage_admin/entradas/register -X POST -H "Content-Type: application/json" -d '{"id_e": "001","fecha_e": "2021-12-12", "cantidad_e": "10"}'`
 
 ### Consultar entradas
@@ -611,3 +642,8 @@ Todas los registros seran en formato JSON y se almacenaran o en la nube.
 
 #### Consultar salidas por cantidad
 `curl http://localhost:8080/storage_admin/salidas/query/10 -X GET`
+
+
+
+
+## Futuros cambios al backend
