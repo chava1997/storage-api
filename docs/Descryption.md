@@ -578,6 +578,9 @@ Todas los registros seran en formato JSON y se almacenaran o en la nube.
   - `presentacion`
   - `clave`
 - Si no se ingresa una descripcion la mercancia no se podra registrar
+
+Esta funcion crea un nuevo archivo json en una ruta predefinida con los valores de la nueva mercancia dados por el usuario.
+
 `curl localhost:8080/storage_admin/mercancia/register -X POST -H "Content-Type: application/json" -d '{"descripcion": "ejemplo","presentacion":"ejemplo","clave": "ejem1"}'`
 
 ### Consultar las mercancias
@@ -585,7 +588,7 @@ Todas los registros seran en formato JSON y se almacenaran o en la nube.
 - Objetivo: Consultar todas las mercacias
 - Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
 
-En esta funcion se regresa una lista con los json que conforman todas las notas disponibles.
+En esta funcion se regresa una lista con los json que conforman todas las mercancias disponibles.
 
 `curl http://localhost:8080/storage_admin/mercancia/query -X GET`
 
@@ -595,6 +598,7 @@ En esta funcion se regresa una lista con los json que conforman todas las notas 
 - Se requiere la clave de la mercancia, este dato debe de ser exacto, en caso de ingresar una clave no valida, regresara un error
 
 Esta funcion regresa una mercancia espesifica en funcion de la clave
+
 `curl http://localhost:8080/storage_admin/mercancia/query/ejem1 -X GET`
 
 ### Consultar una mercancia por descripcion
@@ -603,6 +607,7 @@ Esta funcion regresa una mercancia espesifica en funcion de la clave
 - Se requiere la descripcion de la mercancia, este dato debe de ser exacto, en caso de ingresar una descripcion no valida, regresara un error
 
 Esta funcion regresa una mercancia espesifica en funcion de la descripcion
+
 `curl http://localhost:8080/storage_admin/mercancia/query/ejemplo -X GET`
 
 ### Registrar una entrada
@@ -613,37 +618,232 @@ Esta funcion regresa una mercancia espesifica en funcion de la descripcion
   - `fecha_e`
   - `cantidad_e`
 
+Esta funcion crea un nuevo archivo json en una ruta predefinida con los valores de la nueva entrada dados por el usuario.
 
 `curl localhost:8080/storage_admin/entradas/register -X POST -H "Content-Type: application/json" -d '{"id_e": "001","fecha_e": "2021-12-12", "cantidad_e": "10"}'`
 
 ### Consultar entradas
+- Metodo `GET`
+- Objetivo: Consultar todas las entradas
+- Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
+
+En esta funcion se regresa una lista con los json que conforman todas las entradas disponibles.
+
 `curl http://localhost:8080/storage_admin/entradas/query -X GET`
 
 ### Consultar una entrada por ID
+- Metodo `GET`
+- Objetivo: consultar una entrada espesifica por su ID
+- Se requiere el ID de la entrada, este dato debe de ser exacto, en caso de ingresar un ID no valida, regresara un error
+
+Esta funcion regresa una entrada espesifica en funcion del ID.
+
 `curl http://localhost:8080/storage_admin/entradas/query/001 -X GET`
 
 ### Consultar entradas por fecha
+- Metodo `GET`
+- Objetivo: consultar todas las entradas con una fecha espesifica
+- Se requiere la fecha de las entradas
+
+Esta funcion regresa todas las entradas que se hayan registrado en una fecha espesifica.
+
 `curl http://localhost:8080/storage_admin/entradas/query/2021-12-12 -X GET`
 
 #### Consultar entradas por cantidad
+- Metodo `GET`
+- Objetivo: consultar todas las entradas con una cantidad espesifica
+- Se requiere la cantidad de las entradas
+
+Esta funcion regresa todas las entradas que se hayan registrado con una cantidad espesifica.
+
 `curl http://localhost:8080/storage_admin/entradas/query/10 -X GET`
 
 ### Registrar una salida
+- Metodo `Post`
+- Objetivo: registrar una nueva salida
+- Se requiere ingresar los siguientes valores:
+  - `id_s`
+  - `fecha_s`
+  - `cantidad_s`
+
+  Esta funcion crea un nuevo archivo json en una ruta predefinida con los valores de la nueva salida dados por el usuario.
+
 `curl localhost:8080/storage_admin/salidas/register -X POST -H "Content-Type: application/json" -d '{"id_s": "001","fecha_s": "2021-12-12", "cantidad_s": "10"}'`
 
 ### Consultar entradas
+- Metodo `GET`
+- Objetivo: Consultar todas las salidas
+- Solo se requiere hacer una consulta a la ruta, no se requiere espesificar ningun parametro
+
+En esta funcion se regresa una lista con los json que conforman todas las salidas disponibles.
+
 `curl http://localhost:8080/storage_admin/salidas/query -X GET`
 
 ### Consultar una salida por ID
+- Metodo `GET`
+- Objetivo: consultar una salida espesifica por su ID
+- Se requiere el ID de la salida, este dato debe de ser exacto, en caso de ingresar un ID no valida, regresara un error
+
+Esta funcion regresa una salida espesifica en funcion del ID.
+
 `curl http://localhost:8080/storage_admin/salidas/query/001 -X GET`
 
 ### Consultar salidas por fecha
+- Metodo `GET`
+- Objetivo: consultar todas las salidas con una fecha espesifica
+- Se requiere la fecha de las salidas
+
+Esta funcion regresa todas las salidas que se hayan registrado en una fecha espesifica.
+
 `curl http://localhost:8080/storage_admin/salidas/query/2021-12-12 -X GET`
 
 #### Consultar salidas por cantidad
+- Metodo `GET`
+- Objetivo: consultar todas las salidas con una cantidad espesifica
+- Se requiere la cantidad de las salidas
+
+Esta funcion regresa todas las salidas que se hayan registrado con una cantidad espesifica.
+
 `curl http://localhost:8080/storage_admin/salidas/query/10 -X GET`
 
 
 
 
+## Planeacion del desarrollo del frontend
+
+
+### Index
+En `Storage-admin-0000-Index` se muestra la pagina principal de la interfaz web.
+- Mercancia: Se conforma por el boton `Registrar` y el boton `consultar`
+  - Boton registrar: redireccionara a la pagina de registro de nueva mercancia
+  - Boton consultar: redireccionara a la pagina de consultas de mercancia, en esta podras buscar mercancias por `clave`, `descripcion` y `presentacion`
+
+- Entrada: Se conforma por el boton `Registrar` y el boton `consultar`
+  - Boton registrar: redireccionara a la pagina de registro de nueva entrada
+  - Boton consultar: redireccionara a la pagina de consultas de entradas, en esta podras buscar entrada por `clave`, `descripcion` y `presentacion`
+
+- Salida: Se conforma por el boton `Registrar` y el boton `consultar`
+  - Boton registrar: redireccionara a la pagina de registro de nueva salida
+  - Boton consultar: redireccionara a la pagina de consultas de salidas, en esta podras buscar salidas por `clave`, `descripcion` y `presentacion`
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0000-Index.png" width="550">  
+
+
+### Registro de mercancia
+En `Storage-admin-0006-Registro de mercancia` se solicitan los datos para la creacion de una nueva mercancia.
+- Registrar mercancia: Se conforma por las cajas de texto `clave`, `descripcion` y `presentacion` y por los botones regresar y registrar.
+  - Caja de texto `clave`: se solicita la `clave` de la nueva mercancia
+  - Caja de texto `descripcion`: se solicita la `descripcion` de la nueva mercancia
+  - Caja de texto `presentacion`: se solicita la `presentacion` de la nueva mercancia
+  - Boton regresar: reidreccionara a la pagina Index
+  - Boton registrar: en caso de ue la informacion sea correcta mostrara una caja de texto diciendo que la mercancia se registro correctamente de lo contrario mostrara un mensaje de error
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0006-Registro%20de%20mercancia.png" width="550">  
+
+
+### Registro de entrada
+En `Storage-admin-0004-Registro de entrada` se solicitan los datos para la creacion de una nueva entrada.
+- Registrar entrada: Se conforma por las cajas de texto `ID`, `cantidad` y `fecha` y por los botones regresar y registrar.
+  - Caja de texto `ID`: se solicita el `ID` de la nueva entrada
+  - Caja de texto `cantidad`: se solicita la `cantidad` de la nueva entrada
+  - Caja de texto `fecha`: se solicita la `fecha` de la nueva entrada
+  - Boton regresar: reidreccionara a la pagina Index
+  - Boton registrar: en caso de ue la informacion sea correcta mostrara una caja de texto diciendo que la entrada se registro correctamente de lo contrario mostrara un mensaje de error
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0004-Registro%20de%20entrada.png" width="550">
+
+
+### Registro de salida
+En `Storage-admin-0005-Registro de salida` se solicitan los datos para la creacion de una nueva salida.
+- Registrar salida: Se conforma por las cajas de texto `ID`, `cantidad` y `fecha` y por los botones regresar y registrar.
+  - Caja de texto `ID`: se solicita el `ID` de la nueva salida
+  - Caja de texto `cantidad`: se solicita la `cantidad` de la nueva salida
+  - Caja de texto `fecha`: se solicita la `fecha` de la nueva salida
+  - Boton regresar: reidreccionara a la pagina Index
+  - Boton registrar: en caso de ue la informacion sea correcta mostrara una caja de texto diciendo que la salida se registro correctamente de lo contrario mostrara un mensaje de error
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0005-Registro%20de%20salida.png" width="550">
+
+
+### Consulta de mercancias
+En `Storage-admin-0003-Consultar mercancias` se mustran todas las mercancias registradas y se dan las opciones de buscar datos por `clave`, `descripcion` y por `presentacion`.
+- Consultar mercancia: Se conforma por las cajas de texto `clave`, `descripcion` y `presentacion` y por los botones regresar y buscar(se tiene un boton 'buscar' por cada caja de texto).
+- Caja de texto `clave`: se solicita la `clave` de la mercancia
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `calve` que se ingrese en la caja de texto
+- Caja de texto `descripcion`: se solicita la `descripcion` de la mercancia
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `descripcion` que se ingrese en la caja de texto
+- Caja de texto `presentacion`: se solicita la `presentacion` de la mercancia
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `presentacion` que se ingrese en la caja de texto
+- Boton regresar: reidreccionara a la pagina Index
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0003-Consultar%20mercancias.png" width="550">
+
+
+### Consulta de entradas
+En `Storage-admin-0001-Consultar entradas` se mustran todas las entradas registradas y se dan las opciones de buscar datos por `ID`, `cantidad` y por `fecha`.
+- Registrar entrada: Se conforma por las cajas de texto `ID`, `cantidad` y `fecha` y por los botones regresar y registrar.
+- Caja de texto `ID`: se solicita la `ID` de la entrada
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun el `ID` que se ingrese en la caja de texto
+- Caja de texto `cantidad`: se solicita la `cantidad` de la entrada
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `cantidad` que se ingrese en la caja de texto
+- Caja de texto `fecha`: se solicita la `fecha` de la entrada
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `fecha` que se ingrese en la caja de texto
+- Boton regresar: reidreccionara a la pagina Index
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0001-Consultar%20entradas.png" width="550">
+
+
+### Consulta de salidas
+En `Storage-admin-0002-Consultar Salidas` se mustran todas las salidas registradas y se dan las opciones de buscar datos por `ID`, `cantidad` y por `fecha`.
+- Registrar salida: se conforma por las cajas de texto `ID`, `cantidad` y `fecha` y por los botones regresar y registrar.
+- Caja de texto `ID`: se solicita la `ID` de la salida
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun el `ID` que se ingrese en la caja de texto
+- Caja de texto `cantidad`: se solicita la `cantidad` de la salida
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `cantidad` que se ingrese en la caja de texto
+- Caja de texto `fecha`: se solicita la `fecha` de la salida
+  - Boton buscar: Redireccionara a una pagina de consulta con los datos filtrados segun la `fecha` que se ingrese en la caja de texto
+- Boton regresar: reidreccionara a la pagina Index
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0002-Consultar%20Salidas.png" width="550">
+
+
+
 ## Futuros cambios al backend
+
+### Log In
+EN `Storage-admin-0007-login` se solicitan el `usuario` y la `crontraseña` de acceso para la utenticacion del usuario y posteriormente dejarlo entrar si los datos ingresados son validos, dependiendo de las credenciales que se le asignen al usuario podra tener permisos de registrar, exportar y consultar o solo de consultar y exportar o solo de consultar.
+- Caja de texto `usuario`: se solicita el nombre del usuario
+- Caja de texto `Contraseña`: se solicita la `contraseña` del usuario
+- Boton continuar: si los datos son validos, el sistema redireccionara a la pagina "index", de lo contrario mostrara un mensaje de error.
+- Boton registrar: redireccionara a la pagina "registrar usuario".
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0007-login.png" width="550">
+
+
+### Registro de Usuario
+En `Storage-admin-0008-registrar usuario` se solicitaran el `usuario` y la `contraseña` a registrar asi como los permisos que se le asignaran al usuario, los cuales estan delimitados a las opciones "Consultar, exportar y registrar", "Consultar y exportar" y "Consultar".
+- Caja de texto `usuario`: se solicita el nombre de usuario que se desea dar de alta
+- Caja de texto `contraseña`: se solicita la contraseña que se desea asignar al usuairio, la cual se debera de ingresar cada vez que desee tener acceso al sistema.
+- Caja de texto `confirmr contraseña`: se solicita repetir exactamente la misma contraseña que se ingreso en la caja de texto `contraseña`.
+Combo box `permisos`: se solicita el nivel de permisos que se le asignara al nuevo usuario, dichos permisos estan delimitados a las siguientes opciones:
+  - Consultar, exportar y registrar: esta opcion le concede los permisos de consultar cualquier dato que se desee de la base de datos del programa, asi como exportarlo en formato excel o txt, ademas de permitirle al usuario hacer nuevos registros de mercancia, entradas y salidas
+  - Consultar y exportar: esta opcion le concede los permisos de consultar cualquier dato que se desee de la base de datos del programa, asi como exportarlo en formato excel o txt
+  - Consultar: esta opcion solo concede el permisos de consultar cualquier dato que se desee de la base de datos del programa
+- Boton regresar: redireccionra a la pagina "log in"
+- Boton continuar: en caso de que los datos ingresados sean validos se mostrara un mensaje diciendo "Registro de usuario exitoso", de lo contrario se mostrara un mensaje diciendo "Datos invalidos"
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0008-registrar%20usuario.png" width="550">
+
+
+### Subir imagen a registros de entrada y salida
+En `Storage-admin-0009-registrar entrada` y `Storage-admin-0010-registrar salida` se añadio el boton "subir foto", el cual permitira subir una foto como evidencia del estado de la mercancia tanto al momento de su entrada como en el momento de su salida.
+- Boton subir foto: solicita un archivo de imagen
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0009-registrar%20entrada.png" width="550">
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0010-registrar%20salida.png" width="550">
+
+### Exportar registros en paginas de consultas de entrada y salida
+En `Storage-admin-0011-consultar entradas` y `Storage-admin-0012-consultar salida` se añadio el boton `exportar` asi como unos cuadros de seleccion al lado izquierdo de los registros para seleccionar los registros que se desean exportar, dichos registros se podran exportar en formato excel y txt
+
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0011-consultar%20entradas.png" width="550">
+<img src="https://github.com/chava1997/storage-api/blob/master/images/Storage-admin-0012-consultar%20salida.png" width="550">
