@@ -35,8 +35,7 @@ def query_m(mercancia=None):
     query_result = query_storage(
         "storage_admin/mercancia",
     )
-    if mercancia is not None:
-        return query_result["content"]
+    return query_result["content"]
 
 
 #consultar mercancia por clave
@@ -44,7 +43,7 @@ def query_m_cla(clave=None):
     query_result = query_storage(
         "storage_admin/mercancia",
     )
-    if clave is not None:
+    if clave == clave:
         return [
            r
            for r in query_result["content"]
@@ -91,18 +90,17 @@ def create_e(id_e=None, fecha_e=None, cantidad_e=None):
 
 
 #consulta entradas
-def query_e(entradas=None):
+def query_e(id_e=None):
     query_result = query_storage(
         "storage_admin/entradas",
     )
-    if entradas is not None:
-        return query_result["content"]
+    return query_result["content"]
 
 
 #consultar entrada por ID
 def query_e_id(id_e=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/entradas",
     )
     if id_e is not None:
         return [
@@ -116,7 +114,7 @@ def query_e_id(id_e=None):
 #consultar entrada por fecha
 def query_e_fec(fecha_e=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/entradas",
     )
     if fecha_e is not None:
         return [
@@ -131,7 +129,7 @@ def query_e_fec(fecha_e=None):
 #consultar entrada por contidad
 def query_e_can(cantidad_e=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/entradas",
     )
     if cantidad_e is not None:
         return [
@@ -164,18 +162,17 @@ def create_s(id_s=None, fecha_s=None, cantidad_s=None):
 
 
 #consulta salidas
-def query_s(salidas=None):
+def query_s(id_s=None):
     query_result = query_storage(
         "storage_admin/salidas",
     )
-    if salidas is not None:
-        return query_result["content"]
+    return query_result["content"]
 
 
 #consultar salida por ID
 def query_s_id(id_s=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/salidas",
     )
     if id_s is not None:
         return [
@@ -189,7 +186,7 @@ def query_s_id(id_s=None):
 #consultar salida por fecha
 def query_s_fec(fecha_s=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/salidas",
     )
     if fecha_s is not None:
         return [
@@ -204,7 +201,7 @@ def query_s_fec(fecha_s=None):
 #consultar salida por contidad
 def query_s_can(cantidad_s=None):
     query_result = query_storage(
-        "storage_admin/mercancia",
+        "storage_admin/salidas",
     )
     if cantidad_s is not None:
         return [
