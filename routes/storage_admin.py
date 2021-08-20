@@ -24,13 +24,13 @@ def bar(*args, **kwargs):
 #-------------------------------- Mercancia ----------------------------
 
 
-# curl localhost:8080/storage_admin/register -X POST -H "Content-Type: application/json" -d '{"name": "ejemplo","category":"ejemplo","fecha": "2010-12-12"}'
+# curl localhost:8080/storage_admin/mercancia/register -X POST -H "Content-Type: application/json" -d '{"descrpcion": "ejemplo","presentacion":"ejemplo","clave": "ejem01"}'
 @app.post("/mercancia/register")
 def store(*args, **kwargs):
     payload = bottle.request.json
     print(payload)
     try:
-        descripcion = str(payload['descrpcion'])
+        descripcion = str(payload['descripcion'])
         presentacion = str(payload['presentacion'])
         clave = str(payload['clave'])
 

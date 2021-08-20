@@ -13,12 +13,12 @@ from modules.storage import (
 #crear mercancia
 def create_m(descripcion=None, presentacion=None, clave=None):
     print("Desde Modulo store")
-    print(descripcion,presentacion,clave)
+    print(descripcion, presentacion, clave)
     print("Exito")
     almacenable = {
         "descripcion": descripcion,
         "presentacion": presentacion,
-        "clave": clave
+        "clave": clave,
     }
     nombre_de_archivo = f"{descripcion}-{presentacion}-{clave}.json"
     datos = store_string(
